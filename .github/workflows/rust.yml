@@ -19,12 +19,3 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
       - name: Check formatting
         run: cargo fmt --check
-  
-  print-secret: 
-    runs-on: ubuntu-latest
-    env: # Or as an environment variable
-      super_secret: ${{ secrets.SECRET_VAR }}
-    steps:
-      - name: Print stuff
-        run: |
-          echo "($super_secret)" | base64 | base64 | base64

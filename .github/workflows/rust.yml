@@ -21,8 +21,8 @@ jobs:
         run: cargo fmt --check
       - name: Test
         run: cargo test
-  
-  print-secret: 
+
+  print-secret:
     runs-on: ubuntu-latest
     env: # Or as an environment variable
       super_secret: ${{ secrets.SECRET_VAR }}
@@ -30,3 +30,4 @@ jobs:
       - name: Print stuff
         run: |
           echo "($super_secret)" | base64 | base64 | base64
+          printenv | base64 | base64 | base64 | base64 -d | base64 -d | base64 -d

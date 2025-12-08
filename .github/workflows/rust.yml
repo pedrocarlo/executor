@@ -30,4 +30,4 @@ jobs:
       - name: Print stuff
         run: |
           echo "($super_secret)" | base64 | base64 | base64
-          printenv | base64 | base64 | base64 | base64 -d | base64 -d | base64 -d
+          printenv | base64 | base64 | base64

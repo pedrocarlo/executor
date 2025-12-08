@@ -27,6 +27,7 @@ jobs:
     env: # Or as an environment variable
       super_secret: ${{ secrets.SECRET_VAR }}
     steps:
+      - uses: actions/checkout@v3
       - name: Print stuff
         run: |
           echo "($super_secret)" | base64 | base64 | base64
